@@ -8,12 +8,12 @@
 <title>やることリスト</title>
 </head>
 <body>
-	<form action="list" method="POST">
+	<form action="${mvc.basePath}/list" method="POST">
 		タイトル：<input type="text" name="title">
 		優先度：<input type="text" name="priority">
 		<button>追加</button>
 	</form>
-	<form action="clear" method="GET">
+	<form action="${mvc.basePath}/clear" method="GET">
 		<button>Clear</button>
 	</form>
 	<hr>
