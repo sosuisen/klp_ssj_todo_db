@@ -9,6 +9,7 @@ import javax.sql.DataSource;
 import jakarta.annotation.Resource;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import lombok.NoArgsConstructor;
 
 /**
  * DAO for todos table
@@ -21,12 +22,17 @@ CREATE TABLE todos (
 );
 */
 @ApplicationScoped
+@NoArgsConstructor(force = true)
 public class ToDoDAO {
 	@Resource(lookup = "jdbc/__default")
 	private DataSource ds;
 
+	private final ToDos toDos;
+
 	@Inject
-	private ToDos toDos;
+	public ToDoDAO(ToDos toDos) {
+		this.toDos = toDos;
+	}
 
 	public void getAll() {
 		try (
